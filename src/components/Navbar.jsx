@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import Button from "./Button";
 
@@ -24,6 +24,7 @@ const NavBar = () => {
   const audioElementRef = useRef(null);
   const navContainerRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
@@ -73,7 +74,10 @@ const NavBar = () => {
   return (
     <div
       ref={navContainerRef}
-      className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
+      className={clsx(
+        "fixed left-0 right-0 top-0 z-50 h-20 w-full border-none transition-all duration-700 px-0",
+        location.pathname === "/" && "bg-white bg-opacity-90 backdrop-blur-md shadow"
+      )}
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-4">
@@ -108,7 +112,7 @@ const NavBar = () => {
                   <a
                     key={index}
                     href={item.path}
-                    className="nav-hover-btn text-black"
+                    className="nav-hover-btn text-blue-600"
                   >
                     {item.label}
                   </a>
@@ -116,7 +120,7 @@ const NavBar = () => {
                   <Link
                     key={index}
                     to={item.path}
-                    className="nav-hover-btn text-black"
+                    className="nav-hover-btn text-blue-600"
                   >
                     {item.label}
                   </Link>

@@ -155,14 +155,6 @@ const Hero = () => {
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
               Power Your Online Store <br /> Drive Results with AI
             </p>
-
-            <Button
-              id="watch-trailer"
-              title="Get Started"
-              leftIcon={<TiLocationArrow />}
-              containerClass="bg-yellow-300 flex-center gap-1"
-              onClick={() => navigate('/contact')}
-            />
           </div>
         </div>
       </div>

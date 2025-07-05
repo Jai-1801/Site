@@ -1,11 +1,13 @@
 import gsap from "gsap";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Button from "./Button";
 import AnimatedTitle from "./AnimatedTitle";
 
 const FloatingImage = () => {
   const frameRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleMouseMove = (e) => {
     const { clientX, clientY } = e;
@@ -113,6 +115,7 @@ const FloatingImage = () => {
               id="realm-btn"
               title="see our work"
               containerClass="mt-5"
+              onClick={() => navigate('/coming-soon')}
             />
           </div>
         </div>

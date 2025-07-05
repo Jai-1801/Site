@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ECommerce from "./components/ECommerce";
 import Analytics from "./components/Analytics";
 import SEO from "./components/SEO";
+import ComingSoon from "./components/ComingSoon";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/seo" element={<SEO />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/coming-soon" element={<ComingSoon />} />
       </Routes>
     </Router>
   );
