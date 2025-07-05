@@ -38,7 +38,7 @@ export const BentoTilt = ({ children, className = "" }) => {
   );
 };
 
-export const BentoCard = ({ src, title, description, isComingSoon }) => {
+export const BentoCard = ({ src, title, description }) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [hoverOpacity, setHoverOpacity] = useState(0);
   const hoverButtonRef = useRef(null);
@@ -72,27 +72,6 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
             <p className="mt-3 max-w-64 text-xs md:text-base">{description}</p>
           )}
         </div>
-
-        {isComingSoon && (
-          <div
-            ref={hoverButtonRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/20"
-          >
-            {/* Radial gradient hover effect */}
-            <div
-              className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-              style={{
-                opacity: hoverOpacity,
-                background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
-              }}
-            />
-            <TiLocationArrow className="relative z-20" />
-            <p className="relative z-20">coming soon</p>
-          </div>
-        )}
       </div>
     </div>
   );
@@ -115,7 +94,6 @@ const Features = () => (
           src="videos/feature-1.mp4"
           title={<><b>E-</b>Commerce Engine</>}
           description="Custom online stores, payment integration, and seamless user experience—fully managed by AI."
-          isComingSoon
         />
       </BentoTilt>
 
@@ -125,7 +103,6 @@ const Features = () => (
             src="videos/feature-2.mp4"
             title={<><b>Analytics</b> Dashboard</>}
             description="Real-time business insights, sales tracking, and customer analytics—visualized and actionable."
-            isComingSoon
           />
         </BentoTilt>
 
@@ -134,7 +111,6 @@ const Features = () => (
             src="videos/feature-3.mp4"
             title={<><b>SEO</b> Optimizer</>}
             description="Boost your website ranking and visibility with automated, AI-driven SEO enhancements."
-            isComingSoon
           />
         </BentoTilt>
 
@@ -143,7 +119,6 @@ const Features = () => (
             src="videos/feature-4.mp4"
             title={<><b>Marketing</b> AI</>}
             description="Automate campaigns, target the right audience, and maximize ROI with smart digital marketing."
-            isComingSoon
           />
         </BentoTilt>
 
@@ -162,7 +137,6 @@ const Features = () => (
             src="videos/feature-5.mp4"
             title={<><b>Support</b> AI</>}
             description="24/7 AI-powered customer support and smart chatbots to enhance user satisfaction and automate helpdesk tasks."
-            isComingSoon
           />
         </BentoTilt>
       </div>

@@ -39,6 +39,14 @@ const Analytics = () => {
           </ul>
         </div>
       </div>
+      <div className="mt-12 flex justify-center w-full">
+        <Button
+          ref={ctaRef}
+          title="Get Started with Analytics"
+          containerClass="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 text-lg font-bold shadow-lg transition-all duration-300 rounded-full"
+          onClick={() => navigate('/contact')}
+        />
+      </div>
     </section>
   );
 };
