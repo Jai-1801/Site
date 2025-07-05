@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { TiLocationArrow } from "react-icons/ti";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Button from "./Button";
 import VideoPreview from "./VideoPreview";
@@ -18,6 +19,7 @@ const Hero = () => {
 
   const totalVideos = 4;
   const nextVdRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleVideoLoad = () => {
     setLoadedVideos((prev) => prev + 1);
@@ -141,31 +143,32 @@ const Hero = () => {
         </div>
 
         <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
-          G<b>A</b>MING
+          A<b>I</b> SOLUTIONS
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
             <h1 className="special-font hero-heading text-blue-100">
-              redefi<b>n</b>e
+              empow<b>e</b>r
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Enter the Metagame Layer <br /> Unleash the Play Economy
+              Power Your Online Store <br /> Drive Results with AI
             </p>
 
             <Button
               id="watch-trailer"
-              title="Watch trailer"
+              title="Get Started"
               leftIcon={<TiLocationArrow />}
               containerClass="bg-yellow-300 flex-center gap-1"
+              onClick={() => navigate('/contact')}
             />
           </div>
         </div>
       </div>
 
       <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-        G<b>A</b>MING
+        A<b>I</b> SOLUTIONS
       </h1>
     </div>
   );

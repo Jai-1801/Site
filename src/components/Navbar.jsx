@@ -3,10 +3,17 @@ import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import { Link, useNavigate } from "react-router-dom";
 
 import Button from "./Button";
 
-const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+const navItems = [
+  { label: "E-Commerce", path: "/e-commerce" },
+  { label: "Analytics", path: "/analytics" },
+  { label: "SEO", path: "/seo" },
+  { label: "About", path: "/#about" },
+  { label: "Contact", path: "mailto:abishai95141@gmail.com" },
+];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -16,6 +23,7 @@ const NavBar = () => {
   // Refs for audio and navigation container
   const audioElementRef = useRef(null);
   const navContainerRef = useRef(null);
+  const navigate = useNavigate();
 
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
@@ -71,27 +79,48 @@ const NavBar = () => {
         <nav className="flex size-full items-center justify-between p-4">
           {/* Logo and Product button */}
           <div className="flex items-center gap-7">
-            <img src="/img/logo.png" alt="logo" className="w-10" />
-
-            <Button
-              id="product-button"
-              title="Products"
-              rightIcon={<TiLocationArrow />}
-              containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            />
+            <div className={`md:flex hidden items-center justify-center gap-1`}>
+              <Button
+                id="product-button"
+                title="Our Services"
+                containerClass="bg-blue-50 text-black"
+                onClick={() => {
+                  if (window.location.pathname !== "/") {
+                    navigate("/", { replace: false });
+                    setTimeout(() => {
+                      const el = document.getElementById("features");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }, 100);
+                  } else {
+                    const el = document.getElementById("features");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              />
+            </div>
           </div>
 
           {/* Navigation Links and Audio Button */}
           <div className="flex h-full items-center">
             <div className="hidden md:block">
               {navItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={`#${item.toLowerCase()}`}
-                  className="nav-hover-btn"
-                >
-                  {item}
-                </a>
+                item.label === "Contact" ? (
+                  <a
+                    key={index}
+                    href={item.path}
+                    className="nav-hover-btn text-black"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={index}
+                    to={item.path}
+                    className="nav-hover-btn text-black"
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))}
             </div>
 
